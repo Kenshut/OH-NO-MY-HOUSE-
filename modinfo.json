@@ -9,6 +9,41 @@
     "dependencies": [ "dda" ]
   },
   {
+    "type": "monstergroup",
+    "name": "обычная_группа",
+    "monsters": [
+
+      { "monster": "mon_zombie_ks", "weight": 10, "cost_multiplier": 7, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_fat", "weight": 750, "cost_multiplier": 2, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_tough", "weight": 750, "cost_multiplier": 3, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_child", "weight": 750, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_rot", "weight": 500, "cost_multiplier": 3, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_crawler", "weight": 250, "cost_multiplier": 3, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_dog", "weight": 200, "cost_multiplier": 2, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_dog", "weight": 10, "cost_multiplier": 4, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_dog_zombie_cop", "weight": 50, "cost_multiplier": 4, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_dog_zombie_rot", "weight": 50, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_soldier", "weight": 100, "cost_multiplier": 2, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_cop", "weight": 200, "cost_multiplier": 3, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_fursuit", "weight": 1, "cost_multiplier": 3, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_swat", "weight": 100, "cost_multiplier": 3, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_medical", "weight": 100, "cost_multiplier": 2, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_hazmat", "weight": 100, "cost_multiplier": 3, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_fireman", "weight": 100, "cost_multiplier": 2, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_swimmer_base", "weight": 100, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_static", "weight": 100, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_paramilitary", "weight": 10, "cost_multiplier": 25, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_survivor", "weight": 10, "cost_multiplier": 25, "starts": "30 days", "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_survivor_elite", "weight": 10, "cost_multiplier": 25, "starts": "60 days", "pack_size": [ 20, 30 ] },
+      { "monster": "mon_beekeeper", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_technician", "weight": 10, "cost_multiplier": 12, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_runner", "weight": 200, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+      { "group": "GROUP_FERAL", "weight": 121, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_feral_soldier", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_brainless", "weight": 650, "pack_size": [ 20, 30 ] }
+    ]
+  },
+  {
    "id": "mon_zombie_ks",
    "type": "MONSTER",
    "copy-from": "mon_zombie",
@@ -81,7 +116,7 @@
   {
     "type": "talk_topic",
     "id": "описание1",
-    "dynamic_line": "Стандартный пакет\n\n Каждые семь дней на вас будут нападать орды",
+    "dynamic_line": "Стандартный пакет\n\n Каждые семь дней на вас будут нападать орды, за каждую волну +10 к сложности",
     "responses": [
       {
         "text": "Согласен",
@@ -97,7 +132,7 @@
   {
     "type": "talk_topic",
     "id": "описание2",
-    "dynamic_line": "Усложненный пакет\n\n Каждые 3 дня на вас будут нападать орды",
+    "dynamic_line": "Усложненный пакет\n\n Каждые 3 дня на вас будут нападать орды, за каждую волну +20 к сложности",
     "responses": [
       {
         "text": "Согласен",
@@ -113,7 +148,7 @@
   {
     "type": "talk_topic",
     "id": "описание3",
-    "dynamic_line": "Упрощенный пакет\n\n Каждые 14 дня на вас будут нападать орды",
+    "dynamic_line": "Упрощенный пакет\n\n Каждые 14 дня на вас будут нападать орды, за каждую волну +5 к сложности",
     "responses": [
       {
         "text": "Согласен",
@@ -135,14 +170,96 @@
   },
   {
     "type": "effect_on_condition",
-    "id": "спавн",
+    "id": "спавн_1_группы",
     "effect": [
       {
-        "u_spawn_monster": "mon_zombie_ks",
-        "real_count": { "global_val": "var", "var_name": "сложность", "default": 10 },
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
         "spawn_message": "Пришло время умирать."
       },
 	  { "math": [ "сложность", "+=", "10" ] }
@@ -150,14 +267,96 @@
   },
   {
     "type": "effect_on_condition",
-    "id": "спавн_сложный",
+    "id": "спавн_1_группы_сложный",
     "effect": [
       {
-        "u_spawn_monster": "mon_zombie_ks",
-        "real_count": { "global_val": "var", "var_name": "сложность", "default": 10 },
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
         "spawn_message": "Пришло время умирать."
       },
 	  { "math": [ "сложность", "+=", "20" ] }
@@ -165,14 +364,96 @@
   },
   {
     "type": "effect_on_condition",
-    "id": "спавн_легкий",
+    "id": "спавн_1_группы_легкий",
     "effect": [
       {
-        "u_spawn_monster": "mon_zombie_ks",
-        "real_count": { "global_val": "var", "var_name": "сложность", "default": 10 },
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
+        "spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true,
         "spawn_message": "Пришло время умирать."
       },
 	  { "math": [ "сложность", "+=", "5" ] }
@@ -187,7 +468,7 @@
     "active": true,
     "activated_is_setup": true,
 	"activated_eocs": [ "вкл" ],
-    "processed_eocs": [ "спавн" ],
+    "processed_eocs": [ "спавн_1_группы" ],
     "time": "7 d"
   },
   {
@@ -199,7 +480,7 @@
     "active": true,
     "activated_is_setup": true,
 	"activated_eocs": [ "вкл" ],
-    "processed_eocs": [ "спавн_сложный" ],
+    "processed_eocs": [ "спавн_1_группы_сложный" ],
     "time": "3 d"
   },
   {
@@ -211,7 +492,7 @@
     "active": true,
     "activated_is_setup": true,
 	"activated_eocs": [ "вкл" ],
-    "processed_eocs": [ "спавн_легкий" ],
+    "processed_eocs": [ "спавн_1_группы_легкий" ],
     "time": "14 d"
   },
   {
