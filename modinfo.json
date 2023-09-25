@@ -1,0 +1,62 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "7_days_to_die",
+    "name": "7 days to die",
+    "authors": [ "Kenshut" ],
+    "description": "Вы чуствуете себя богом этого мира? Тогда наша корпорация №@$#, готова предоставить вам особые услуги, и за определённую ценну мы переместим модифицированный блоб в ваше измерение. Вы согласны?",
+    "category": "rebalance",
+    "dependencies": [ "dda" ]
+  },
+  {
+   "id": "mon_zombie_ks",
+   "type": "MONSTER",
+   "copy-from": "mon_zombie",
+   "flags": [
+      "SEES",
+      "HEARS",
+	  "ALL_SEEING",
+      "STUMBLES",
+      "WARM",
+      "GRABS",
+      "BASHES",
+      "GROUP_BASH",
+      "POISON",
+      "NO_BREATHE",
+      "REVIVES",
+      "PUSH_MON",
+      "FILTHY"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "спавн",
+    "effect": [
+      {
+        "u_spawn_monster": "mon_zombie_ks",
+        "real_count": 100,
+        "min_radius": 35,
+        "max_radius": 50,
+        "spawn_message": "Пришло время умирать."
+      }
+    ]
+  },
+  {
+    "type": "mutation",
+    "id": "Меченый",
+    "name": { "str": "Меченый" },
+    "points": 0,
+    "description": "Вы заключили ту сделку и почувствовали как неизвестная энергия вливается в ваше тело.",
+    "active": true,
+    "activated_is_setup": true,
+	"activated_eocs": [ "вкл" ],
+    "processed_eocs": [ "спавн" ],
+    "time": "7 m"
+  }
+  ,
+  {
+    "type": "effect_on_condition",
+    "id": "вкл",
+    "effect": [ { "u_message": "Вы заключили ту сделку и почувствовали как неизвестная энергия вливается в ваше тело" } ]
+  }
+]
