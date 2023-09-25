@@ -30,15 +30,31 @@
   },
   {
     "type": "effect_on_condition",
+    "id": "считаем_убийства",
+    "eoc_type": "EVENT",
+    "required_event": "character_kills_monster",
+    "effect": [ { "math": [ "сложность", "+=", "1" ] } ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "запуск",
+    "eoc_type": "EVENT",
+    "required_event": "game_start",
+	"condition": { "math": [ "5", ">", "сложность" ] },
+    "effect": [{ "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "=", { "const": 10 } ] } ] 
+  },
+  {
+    "type": "effect_on_condition",
     "id": "спавн",
     "effect": [
       {
         "u_spawn_monster": "mon_zombie_ks",
-        "real_count": 100,
+        "real_count": { "global_val": "var", "var_name": "сложность", "default": 10 },
         "min_radius": 35,
         "max_radius": 50,
         "spawn_message": "Пришло время умирать."
-      }
+      },
+	  { "math": [ "сложность", "+=", "10" ] }
     ]
   },
   {
