@@ -41,7 +41,97 @@
     "eoc_type": "EVENT",
     "required_event": "game_start",
 	"condition": { "math": [ "5", ">", "сложность" ] },
-    "effect": [{ "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "=", { "const": 10 } ] } ] 
+    "effect": [
+	{ "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "=", { "const": 10 } ] },
+	{ "open_dialogue": { "topic": "начало" } },
+	{ "u_add_trait": "Меченый"}
+	] 
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "стандарт",
+    "effect": [
+	{ "u_add_trait": "Меченый"}
+	] 
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "Усложненный",
+    "effect": [
+	{ "u_add_trait": "Меченый_сложный"}
+	] 
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "Упрощенный",
+    "effect": [
+	{ "u_add_trait": "Меченый_простой"}
+	] 
+  },
+  {
+    "type": "talk_topic",
+    "id": "начало",
+    "dynamic_line": "корпорация №@$# приветствует вас, какие именно характеристики вы хотите иметь у модифицированного блоба?",
+    "responses": [
+      { "text": "Стандартный пакет", "topic": "описание1" },
+	  { "text": "Усложненный пакет", "topic": "описание2" },
+	  { "text": "Упрощенный пакет", "topic": "описание3" }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "описание1",
+    "dynamic_line": "Стандартный пакет\n\n Каждые семь дней на вас будут нападать орды",
+    "responses": [
+      {
+        "text": "Согласен",
+        "effect": [ { "run_eocs": "стандарт" } ],
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "Нужно еще подумать",
+        "topic": "начало"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "описание2",
+    "dynamic_line": "Усложненный пакет\n\n Каждые 3 дня на вас будут нападать орды",
+    "responses": [
+      {
+        "text": "Согласен",
+        "effect": [ { "run_eocs": "сложный" } ],
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "Нужно еще подумать",
+        "topic": "начало"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "описание3",
+    "dynamic_line": "Упрощенный пакет\n\n Каждые 14 дня на вас будут нападать орды",
+    "responses": [
+      {
+        "text": "Согласен",
+        "effect": [ { "run_eocs": "простой" } ],
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "Нужно еще подумать",
+        "topic": "начало"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "настройка",
+    "eoc_type": "EVENT",
+    "required_event": "game_start",
+     "effect": [ { "open_dialogue": { "topic": "начало" } } ]
   },
   {
     "type": "effect_on_condition",
@@ -52,6 +142,7 @@
         "real_count": { "global_val": "var", "var_name": "сложность", "default": 10 },
         "min_radius": 35,
         "max_radius": 50,
+		"outdoor_only": true,
         "spawn_message": "Пришло время умирать."
       },
 	  { "math": [ "сложность", "+=", "10" ] }
@@ -67,9 +158,32 @@
     "activated_is_setup": true,
 	"activated_eocs": [ "вкл" ],
     "processed_eocs": [ "спавн" ],
-    "time": "7 m"
-  }
-  ,
+    "time": "7 d"
+  },
+  {
+    "type": "mutation",
+    "id": "Меченый_сложный",
+    "name": { "str": "Меченый" },
+    "points": 0,
+    "description": "Вы заключили ту сделку и почувствовали как неизвестная энергия вливается в ваше тело.",
+    "active": true,
+    "activated_is_setup": true,
+	"activated_eocs": [ "вкл" ],
+    "processed_eocs": [ "спавн_сложный" ],
+    "time": "3 d"
+  },
+  {
+    "type": "mutation",
+    "id": "Меченый_простой",
+    "name": { "str": "Меченый" },
+    "points": 0,
+    "description": "Вы заключили ту сделку и почувствовали как неизвестная энергия вливается в ваше тело.",
+    "active": true,
+    "activated_is_setup": true,
+	"activated_eocs": [ "вкл" ],
+    "processed_eocs": [ "спавн_легкий" ],
+    "time": "14 d"
+  },
   {
     "type": "effect_on_condition",
     "id": "вкл",
