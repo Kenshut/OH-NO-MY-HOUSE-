@@ -468,7 +468,7 @@
     "activated_is_setup": true,
 	"activated_eocs": [ "вкл" ],
     "processed_eocs": [ "спавн_1_группы" ],
-    "time": "7 m"
+    "time": "7 d"
   },
   {
     "type": "mutation",
