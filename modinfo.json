@@ -1,11 +1,12 @@
 [
   {
     "type": "MOD_INFO",
-    "id": "7_days_to_die",
-    "name": "7 days to die",
+    "id": "OH_NO_MY_HOUSE",
+    "name": "OH NO MY HOUSE",
     "authors": [ "Kenshut" ],
     "description": "Вы чуствуете себя богом этого мира? Тогда наша корпорация №@$#, готова предоставить вам особые услуги, и за определённую ценну мы переместим модифицированный блоб в ваше измерение. Вы согласны?",
     "category": "rebalance",
+	"version": "Alpha 1",
     "dependencies": [ "dda" ]
   },
   {
@@ -33,14 +34,29 @@
       { "monster": "mon_zombie_swimmer_base", "weight": 100, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
       { "monster": "mon_zombie_static", "weight": 100, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
       { "monster": "mon_zombie_paramilitary", "weight": 10, "cost_multiplier": 25, "pack_size": [ 20, 30 ] },
-      { "monster": "mon_zombie_survivor", "weight": 10, "cost_multiplier": 25, "starts": "30 days", "pack_size": [ 20, 30 ] },
-      { "monster": "mon_zombie_survivor_elite", "weight": 10, "cost_multiplier": 25, "starts": "60 days", "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_survivor", "weight": 10, "cost_multiplier": 25, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_zombie_survivor_elite", "weight": 10, "cost_multiplier": 25, "pack_size": [ 20, 30 ] },
       { "monster": "mon_beekeeper", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
       { "monster": "mon_zombie_technician", "weight": 10, "cost_multiplier": 12, "pack_size": [ 20, 30 ] },
       { "monster": "mon_zombie_runner", "weight": 200, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
       { "group": "GROUP_FERAL", "weight": 121, "pack_size": [ 20, 30 ] },
       { "monster": "mon_feral_soldier", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
       { "monster": "mon_zombie_brainless", "weight": 650, "pack_size": [ 20, 30 ] }
+    ]
+  },
+  {
+    "name": "необычная_группа",
+    "type": "monstergroup",
+    "monsters": [
+      { "monster": "mon_zombie", "weight": 250 },
+      { "monster": "mon_zombie_fat", "weight": 250 },
+      { "monster": "mon_zombie_tough", "weight": 400 },
+      { "monster": "mon_zombie_brute", "weight": 80,  "cost_multiplier": 2 },
+      { "monster": "mon_zombie_hulk", "weight": 50, "cost_multiplier": 3 },
+      { "monster": "mon_zombie_runner", "weight": 350 },
+      { "monster": "mon_feral_human_pipe", "weight": 60 },
+      { "monster": "mon_feral_human_crowbar", "weight": 30 },
+      { "monster": "mon_feral_human_axe", "weight": 5, "cost_multiplier": 2 }
     ]
   },
   {
@@ -163,14 +179,20 @@
   {
     "type": "effect_on_condition",
     "id": "настройка",
-    "eoc_type": "EVENT",
-    "required_event": "game_start",
      "effect": [ { "open_dialogue": { "topic": "начало" } } ]
   },
   {
     "type": "effect_on_condition",
     "id": "спавн_1_группы",
     "effect": [
+	{
+        "u_spawn_monster": "необычная_группа",
+        "real_count": {"arithmetic":[ {"arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ]}, "-",{ "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
       {
         "u_spawn_monster": "обычная_группа",
         "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
@@ -178,7 +200,7 @@
         "max_radius": 50,
 		"outdoor_only": true,
 		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"spawn_message": "Пришло время умирать."
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -186,8 +208,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -195,8 +216,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -204,8 +224,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -213,8 +232,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -222,8 +240,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -231,8 +248,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -240,8 +256,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -249,8 +264,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -258,8 +272,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  { "math": [ "сложность", "+=", "10" ] }
     ]
@@ -275,7 +288,15 @@
         "max_radius": 50,
 		"outdoor_only": true,
 		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "необычная_группа",
+        "real_count": {"arithmetic":[ {"arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ]}, "-",{ "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -283,8 +304,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -292,8 +312,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -301,8 +320,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -310,8 +328,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -319,8 +336,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -328,8 +344,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -337,8 +352,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -346,8 +360,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -355,8 +368,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  { "math": [ "сложность", "+=", "20" ] }
     ]
@@ -372,7 +384,15 @@
         "max_radius": 50,
 		"outdoor_only": true,
 		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"spawn_message": "Пришло время умирать."
+      },
+	  {
+        "u_spawn_monster": "необычная_группа",
+        "real_count": {"arithmetic":[ {"arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ]}, "-",{ "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -380,8 +400,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -389,8 +408,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -398,8 +416,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -407,8 +424,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -416,8 +432,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -425,8 +440,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -434,8 +448,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -443,8 +456,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "обычная_группа",
@@ -452,8 +464,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-        "spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  { "math": [ "сложность", "+=", "5" ] }
     ]
@@ -468,7 +479,19 @@
     "activated_is_setup": true,
 	"activated_eocs": [ "вкл" ],
     "processed_eocs": [ "спавн_1_группы" ],
-    "time": "7 d"
+    "time": "7 m"
+  },
+  {
+    "type": "mutation",
+    "id": "Меченый_test",
+    "name": { "str": "Меченый" },
+    "points": 0,
+    "description": "Вы заключили ту сделку и почувствовали как неизвестная энергия вливается в ваше тело.",
+    "active": true,
+    "activated_is_setup": true,
+	"activated_eocs": [ "вкл" ],
+    "processed_eocs": [ "спавн_1_группы" ],
+    "time": "1 m"
   },
   {
     "type": "mutation",
