@@ -6,7 +6,7 @@
     "authors": [ "Kenshut" ],
     "description": "Вы чуствуете себя богом этого мира? Тогда наша корпорация №@$#, готова предоставить вам особые услуги, и за определённую ценну мы переместим модифицированный блоб в ваше измерение. Вы согласны?",
     "category": "rebalance",
-	"version": "Alpha 1.1",
+	"version": "Alpha 1.2",
     "dependencies": [ "dda" ]
   },
   {
@@ -15,6 +15,7 @@
     "monsters": [
 
       { "monster": "mon_zombie_ks", "weight": 10, "cost_multiplier": 7, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_zombie", "weight": 250 },
       { "monster": "mon_zombie_fat", "weight": 750, "cost_multiplier": 2, "pack_size": [ 20, 30 ] },
       { "monster": "mon_zombie_tough", "weight": 750, "cost_multiplier": 3, "pack_size": [ 20, 30 ] },
       { "monster": "mon_zombie_child", "weight": 750, "pack_size": [ 20, 30 ] },
@@ -49,6 +50,7 @@
     "type": "monstergroup",
     "monsters": [
       { "monster": "mon_zombie", "weight": 250 },
+	  { "monster": "mon_zombie_ks", "weight": 250 },
       { "monster": "mon_zombie_fat", "weight": 250 },
       { "monster": "mon_zombie_tough", "weight": 400 },
       { "monster": "mon_zombie_brute", "weight": 80,  "cost_multiplier": 2 },
@@ -84,7 +86,7 @@
     "id": "считаем_убийства",
     "eoc_type": "EVENT",
     "required_event": "character_kills_monster",
-    "effect": [ { "math": [ "сложность", "+=", "1" ] } ]
+    "effect": [ { "math": [ "сложность", "+=", "0.1" ] } ]
   },
   {
     "type": "effect_on_condition",
