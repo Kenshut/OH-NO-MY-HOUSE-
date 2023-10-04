@@ -6,7 +6,7 @@
     "authors": [ "Kenshut" ],
     "description": "Вы чуствуете себя богом этого мира? Тогда наша корпорация №@$#, готова предоставить вам особые услуги, и за определённую ценну мы переместим модифицированный блоб в ваше измерение. Вы согласны?",
     "category": "rebalance",
-	"version": "Alpha 1.2",
+	"version": "Alpha 1.3",
     "dependencies": [ "dda" ]
   },
   {
@@ -201,15 +201,6 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-		"spawn_message": "Пришло время умирать."
-      },
-	  {
-        "u_spawn_monster": "обычная_группа",
-        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
-        "min_radius": 35,
-        "max_radius": 50,
-		"outdoor_only": true,
 		"group": true
       },
 	  {
@@ -276,8 +267,278 @@
 		"outdoor_only": true,
 		"group": true
       },
+	  {
+        "u_spawn_monster": "обычная_группа",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  { "run_eocs": "выбор_соообщения" } ,
 	  { "math": [ "сложность", "+=", "10" ] }
     ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения",
+     "effect": [ {"u_message": "Пришло время умирать.","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения1",
+     "effect": [ {"u_message": "Вот и пришел твой конец.","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения3",
+     "effect": [ {"u_message": "Вы слишите тихое щелканье.","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения4",
+     "effect": [ {"u_message": "Вы чувствуете нарастающие чувство дискомфорта.","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения5",
+     "effect": [ {"u_message": "Они приближаются…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения6",
+     "effect": [ {"u_message": "Испааааанцы!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения8",
+     "effect": [ {"u_message": "ОНИ ВЕЗДЕ, ОНИ НА ДЕРЕВЬЯХ <u_name>, ХВАТАЙ ОРУЖИЕ И ГОТОВЬСЯ К БОЮ","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения9",
+     "effect": [ {"u_message": "Вальхалла ждёт!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения10",
+     "effect": [ {"u_message": "тикай с городу <u_name>, за тобой идут","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения11",
+     "effect": [ {"u_message": "Еретики уже здесь, их больше чем мы предполагали, мы выпустим только тебя на поле боя","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения12",
+     "effect": [ {"u_message": "Ну ничего… Страшного…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения13",
+     "effect": [ {"u_message": "ААААА, МЕРТВЕЦЫ ВОССТАЮТ ИЗ МОГИЛ!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения14",
+     "effect": [ {"u_message": "Живые наступают…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения15",
+     "effect": [ {"u_message": "И снова гаснет свет…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения16",
+     "effect": [ {"u_message": "WE ARE MANY, YOU ARE BUT ONE…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения17",
+     "effect": [ {"u_message": "Прекрасный сегодня денёк снаружи, птички поют цветочки благоухают. В такие дни, такие дети как ты…\n\nДолжны гореть в аду…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения18",
+     "effect": [ {"u_message": "внезапно перед собой вы видите фейерверк из искры и пламенев из неоткуда, из них появилась фраза\n\nНу ты и неудачник, за тобой идут имя пользователя","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения19",
+     "effect": [ {"u_message": "Настал час тьмы…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения20",
+     "effect": [ {"u_message": "совет от Антона: <u_name>, оглянись вокруг и пойми что жизнь тщетна, так что бери оружие и готовься к последнему бою, героин с собой? если да, то вкалывай","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения21",
+     "effect": [ {"u_message": "Дальше… Бога нет…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения22",
+     "effect": [ {"u_message": "Я ЗАСТАВЛЮ ТЕБЯ СТРАДАТЬ!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения23",
+     "effect": [ {"u_message": "<u_name>, молись","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения24",
+     "effect": [ {"u_message": "<u_name>…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения25",
+     "effect": [ {"u_message": "АГА! ПОПАЛСЯ!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения26",
+     "effect": [ {"u_message": "Они наконец, нашли тебя…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения27",
+     "effect": [ {"u_message": "а я знаю что ты не выходишь из конуры пол года, сейчас тебя выкурят '=)'","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения7",
+     "effect": [ {"u_message": "Сейчас мы будем заниматься сексом!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения28",
+     "effect": [ {"u_message": "Он нашёл тебя","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения30",
+     "effect": [ {"u_message": "Пришло время надирание чей-то задницы!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения31",
+     "effect": [ {"u_message": "мир пощади антона…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения33",
+     "effect": [ {"u_message": "ЗА ОРДУ!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения34",
+     "effect": [ {"u_message": "мир пощади <u_name>…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения35",
+     "effect": [ {"u_message": "Жизнь за назгула","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения36",
+     "effect": [ {"u_message": "Жизнь за Айур!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения37",
+     "effect": [ {"u_message": "жизнь за себя!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения38",
+     "effect": [ {"u_message": "ТРЕВОГА, МИ-ГО УГРОЖАЮТ НАМ БОМБАРДИРОВКОЙ","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения39",
+     "effect": [ {"u_message": "МОЯ ЖИЗНЬ ПРЕНАДЛЕЖИТ ОРДЕ!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения40",
+     "effect": [ {"u_message": "Фестиваль фистинга","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения41",
+     "effect": [ {"u_message": "good wave, good luck","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения32",
+     "effect": [ {"u_message": "Заканчивай свои посидушки, и иди сюда и поцелуй нас в жаркие уста! Романтики хочется…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения29",
+     "effect": [ {"u_message": "Привет ♂Slave♂, скоро в твой ♂gym♂ ворвутся ♂leatherman's♂, заставь своих ♂Dungeon masters♂ гордиться!","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "соообщения2",
+     "effect": [ {"u_message": "тикай с городу тоби…","popup":true} ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "выбор_соообщения",
+    "effect": [
+      {
+        "weighted_list_eocs": [
+          [ "соообщения", { "const": 10 } ],
+          [ "соообщения1", { "const": 10 } ],
+		  [ "соообщения2", { "const": 10 } ],
+		  [ "соообщения3", { "const": 10 } ],
+		  [ "соообщения4", { "const": 10 } ],
+		  [ "соообщения5", { "const": 10 } ],
+		  [ "соообщения6", { "const": 1 } ],
+          [ "соообщения7", { "const": 1 } ],
+		  [ "соообщения8", { "const": 1 } ],
+		  [ "соообщения9", { "const": 1 } ],
+		  [ "соообщения10", { "const": 1 } ],
+		  [ "соообщения11", { "const": 1 } ],
+		  [ "соообщения12", { "const": 1 } ],
+          [ "соообщения13", { "const": 1 } ],
+		  [ "соообщения14", { "const": 1 } ],
+		  [ "соообщения15", { "const": 1 } ],
+		  [ "соообщения16", { "const": 1 } ],
+		  [ "соообщения17", { "const": 1 } ],
+		  [ "соообщения18", { "const": 1 } ],
+          [ "соообщения19", { "const": 1 } ],
+		  [ "соообщения20", { "const": 1 } ],
+		  [ "соообщения21", { "const": 1 } ],
+		  [ "соообщения22", { "const": 1 } ],
+		  [ "соообщения23", { "const": 1 } ],
+		  [ "соообщения24", { "const": 1 } ],
+          [ "соообщения25", { "const": 1 } ],
+		  [ "соообщения26", { "const": 1 } ],
+		  [ "соообщения27", { "const": 1 } ],
+		  [ "соообщения28", { "const": 1 } ],
+		  [ "соообщения29", { "const": 1 } ],
+		  [ "соообщения30", { "const": 1 } ],
+          [ "соообщения31", { "const": 1 } ],
+		  [ "соообщения32", { "const": 1 } ],
+		  [ "соообщения33", { "const": 1 } ],
+		  [ "соообщения34", { "const": 1 } ],
+		  [ "соообщения35", { "const": 1 } ],
+		  [ "соообщения36", { "const": 1 } ],
+          [ "соообщения37", { "const": 1 } ],
+		  [ "соообщения38", { "const": 1 } ],
+		  [ "соообщения39", { "const": 1 } ],
+		  [ "соообщения40", { "const": 1 } ],
+		  [ "соообщения41", { "const": 1 } ]
+        ]
+      }]
   },
   {
     "type": "effect_on_condition",
@@ -289,8 +550,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-		"spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "необычная_группа",
@@ -372,6 +632,7 @@
 		"outdoor_only": true,
 		"group": true
       },
+	  { "run_eocs": "выбор_соообщения" } ,
 	  { "math": [ "сложность", "+=", "20" ] }
     ]
   },
@@ -385,8 +646,7 @@
         "min_radius": 35,
         "max_radius": 50,
 		"outdoor_only": true,
-		"group": true,
-		"spawn_message": "Пришло время умирать."
+		"group": true
       },
 	  {
         "u_spawn_monster": "необычная_группа",
@@ -468,6 +728,7 @@
 		"outdoor_only": true,
 		"group": true
       },
+	  { "run_eocs": "выбор_соообщения" } ,
 	  { "math": [ "сложность", "+=", "5" ] }
     ]
   },
@@ -481,7 +742,7 @@
     "activated_is_setup": true,
 	"activated_eocs": [ "вкл" ],
     "processed_eocs": [ "спавн_1_группы" ],
-    "time": "7 m"
+    "time": "7 d"
   },
   {
     "type": "mutation",
