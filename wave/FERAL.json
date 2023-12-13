@@ -1,0 +1,427 @@
+[
+{
+    "type": "monstergroup",
+    "name": "обычная_группа(дикие)",
+    "monsters": [
+	  { "monster": "mon_feral_human_pipe", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_sapien_spear", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_human_crowbar", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_human_axe", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_human_tool", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_scientist_scalpel", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_labsecurity_flashlight", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_maid_broom", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_maid_candlestick", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_maid_knife", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_fancy_rapier", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_fancy_rapier_fake", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_fancy_crossbow", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_armored_mace", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_armored_battleaxe", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_survivalist", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_soldier", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_swimmer_kickboard", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_diver_knife", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_sailor_wrench", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_sailor_axe", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_sailor_mop", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_sailor_lug_wrench", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_marine_bayonet", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_cop", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_feral_human_archaeologist", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+	  { "monster": "mon_chud", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] },
+      { "monster": "mon_feral_soldier", "weight": 10, "cost_multiplier": 5, "pack_size": [ 20, 30 ] }
+	  ]
+  },
+  {
+    "name": "необычная_группа(дикие)",
+    "type": "monstergroup",
+    "monsters": [
+      { "monster": "mon_feral_militia", "weight": 250, "cost_multiplier": 3  },
+	  { "monster": "mon_feral_prepper", "weight": 250, "cost_multiplier": 3  },
+      { "monster": "mon_feral_labsecurity_9mm", "weight": 250, "cost_multiplier": 3 },
+      { "monster": "mon_feral_jackboot", "weight": 400 , "cost_multiplier": 3 },
+      { "monster": "mon_feral_officer", "weight": 80, "cost_multiplier": 3  }
+    ]
+  },
+  {
+    "id": "Кристал_ингибитор(дикие)",
+    "type": "item_group",
+    "subtype": "collection",
+    "magazine": 100,
+    "ammo": 60,
+    "entries": [
+      {
+        "distribution": [
+          { "group": "mon_feral_militia_death_drops", "prob": 100  }
+        ]
+      },
+      { "item": "Упрощение", "prob": 25 }
+    ]
+  },
+  {
+   "id": "mon_feral_militia_ks",
+   "type": "MONSTER",
+   "copy-from": "mon_feral_militia",
+   "death_drops": "Кристал_ингибитор(дикие)" 
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "босс_волна_норм(дикие)",
+	"condition":{"and": [ 
+	{ "compare_num": [ { "global_val": "var", "var_name": "сложность_игры" }, "=", { "const": 7 } ] },
+	{ "compare_num": [ { "global_val": "var", "var_name": "включение_боссов" }, "!=", { "const": 0 } ] },
+	{ "compare_num": [ { "global_val": "var", "var_name": "коечто" }, "=", { "const": 0 } ] }
+	]},
+    "effect": [
+	{
+        "u_spawn_monster": "mon_feral_militia_ks",
+        "real_count": 4,
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "босс_волна_усложнен(дикие)",
+	"condition":{"and": [ 
+	{ "compare_num": [ { "global_val": "var", "var_name": "сложность_игры" }, "=", { "const": 8 } ] },
+	{ "compare_num": [ { "global_val": "var", "var_name": "включение_боссов" }, "!=", { "const": 0 } ] },
+	{ "compare_num": [ { "global_val": "var", "var_name": "коечто" }, "=", { "const": 0 } ] }
+	]},
+    "effect": [
+	{
+        "u_spawn_monster": "mon_feral_militia_ks",
+        "real_count": 8,
+        "min_radius": 35,
+        "max_radius": 50
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "босс_волна_упрощен(дикие)",
+	"condition":{"and": [ 
+	{ "compare_num": [ { "global_val": "var", "var_name": "сложность_игры" }, "=", { "const": 9 } ] },
+	{ "compare_num": [ { "global_val": "var", "var_name": "включение_боссов" }, "!=", { "const": 0 } ] },
+	{ "compare_num": [ { "global_val": "var", "var_name": "коечто" }, "=", { "const": 0 } ] }
+	]},
+    "effect": [
+	{
+        "u_spawn_monster": "mon_feral_militia_ks",
+        "real_count": 2,
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "спавн_1_группы(дикие)",
+	"recurrence": "7 day",
+	"global": true,
+	"condition": { "compare_num": [ { "global_val": "var", "var_name": "сложность_игры" }, "=", { "const": 7 } ] },
+    "effect": [
+	{
+        "u_spawn_monster": "необычная_группа(дикие)",
+        "real_count": {"arithmetic":[ {"arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ]}, "-",{ "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+      {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  { "run_eocs": "выбор_соообщения" } ,
+	  { "math": [ "волны", "+=", "1" ]},
+	  { "math": [ "коечто", "=", "boss_spawn()" ]},
+	  { "run_eocs": "босс_волна_норм(дикие)" } ,
+	  { "math": [ "сложность", "+=", "10" ] }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "спавн_1_группы_сложный(дикие)",
+	"recurrence": "3 day",
+	"global": true,
+	"condition": { "compare_num": [ { "global_val": "var", "var_name": "сложность_игры" }, "=", { "const": 8 } ] },
+    "effect": [
+      {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "необычная_группа(дикие)",
+        "real_count": {"arithmetic":[ {"arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ]}, "-",{ "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  { "run_eocs": "выбор_соообщения" } ,
+	  { "math": [ "волны", "+=", "1" ]},
+	  { "math": [ "коечто", "=", "boss_spawn()" ]},
+	  { "run_eocs": "босс_волна_усложнен(дикие)" } ,
+	  { "math": [ "сложность", "+=", "20" ] }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "спавн_1_группы_легкий(дикие)",
+	"recurrence": "14 day",
+	"global": true,
+	"condition": { "compare_num": [ { "global_val": "var", "var_name": "сложность_игры" }, "=", { "const": 9 } ] },
+    "effect": [
+      {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "необычная_группа(дикие)",
+        "real_count": {"arithmetic":[ {"arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ]}, "-",{ "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  {
+        "u_spawn_monster": "обычная_группа(дикие)",
+        "real_count": { "arithmetic": [ { "global_val": "var", "var_name": "сложность" }, "/", { "const": 10 } ] },
+        "min_radius": 35,
+        "max_radius": 50,
+		"outdoor_only": true,
+		"group": true
+      },
+	  { "run_eocs": "выбор_соообщения" } ,
+	  { "math": [ "волны", "+=", "1" ]},
+	  { "math": [ "коечто", "=", "boss_spawn()" ]},
+	  { "run_eocs": "босс_волна_упрощен(дикие)" } ,
+	  { "math": [ "сложность", "+=", "5" ] }
+    ]
+  }
+]

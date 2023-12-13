@@ -1,0 +1,18 @@
+[
+  {
+    "id": "Упрощение",
+    "type": "COMESTIBLE",
+    "category": "spare_parts",
+	"comestible_type": "MED",
+    "name": { "str": "<color_light_blue>Кристал ингибитор</color>"},
+    "description": "<color_light_blue>Уменьшает сложность последующих волн.</color>",
+	"use_action": { "type": "effect_on_conditions","description": "Разбить", "effect_on_conditions": [ "Кристал_ингибитор" ] },
+    "volume": "1 ml",
+    "price": 10,
+    "price_postapoc": 10,
+    "material": [ "glass" ],
+    "symbol": ",",
+	"flags": ["ZERO_WEIGHT"],
+    "color": "light_gray"
+  }
+]
